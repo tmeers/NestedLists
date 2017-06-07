@@ -1,0 +1,10 @@
+﻿@model NestedLists.ViewModels.ContainerViewModel
+    
+@foreach (var item in Model.Groups)
+{
+    <div>
+    @Html.CheckBoxFor(i => item.Selected)
+    @Html.LabelForModel(item.GroupName)
+    @Html.HiddenFor(i => item.Id)
+    </div>
+}
