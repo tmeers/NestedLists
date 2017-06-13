@@ -25,26 +25,30 @@ namespace NestedLists.Controllers
             {
                 Id = 1,
                 Name = "Container 1",
-                Groups = new List<GroupViewModel>(AddGroups(GroupType.High))
+                Groups = new List<GroupViewModel>(AddGroups(GroupType.High)),
+                ContainerType = GroupType.High
             });
             view.Containers.Add(new ContainerViewModel
             {
                 Id = 2,
                 Name = "Container 2",
-                Groups = new List<GroupViewModel>(AddGroups(GroupType.Medium))
+                Groups = new List<GroupViewModel>(AddGroups(GroupType.Medium)),
+                ContainerType = GroupType.Medium
             });
             view.Containers.Add(new ContainerViewModel
             {
                 Id = 3,
                 Name = "Container 3",
-                Groups = new List<GroupViewModel>(AddGroups(GroupType.Low))
+                Groups = new List<GroupViewModel>(AddGroups(GroupType.Low)),
+                ContainerType = GroupType.Low
             });
 
             view.Containers.Add(new ContainerViewModel
             {
                 Id = 4,
                 Name = "Container 4",
-                Groups = new List<GroupViewModel>(AddGroups(GroupType.Low))
+                Groups = new List<GroupViewModel>(AddGroups(GroupType.Low)),
+                ContainerType = GroupType.Low
             });
 
             return View(view);

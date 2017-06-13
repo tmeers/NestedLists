@@ -1,10 +1,13 @@
-﻿@model NestedLists.ViewModels.ContainerViewModel
-    
-@for(var i=0; i<Model.Groups.Count; i++)
+﻿@using NestedLists.ViewModels
+@model NestedLists.ViewModels.ContainerViewModel
+
+@{ List<GroupViewModel> containers = Model.Groups.Where(x => x.GroupType == Model.ContainerType).ToList(); }
+
+@for(var i=0; i < containers.Count; i++)
 {
     <div>
     @Html.CheckBoxFor(m => m.Groups[i].Selected)
-    @Html.LabelForModel(Model.Groups[i].GroupName)
+    @Html.LabelForModel(Model.Groups[i].GroupName + " - " + Model.Groups[i].GroupType.ToString())
     @Html.HiddenFor(m => m.Groups[i].Id)
     </div>
 }
