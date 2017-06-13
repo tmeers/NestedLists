@@ -9,10 +9,11 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     <div class="row">
-        @for (var i=0; i<Model.Containers.Count; i++)
+        <hr/>
+        @for (var i = 0; i < Model.Containers.Count; i++)
         {
             <div>
-                @Html.LabelFor(m => m.Containers[i].Name)
+                @Html.LabelForModel(Model.Containers[i].Name)
                 @Html.EditorFor(m => m.Containers[i])
             </div>
         }
