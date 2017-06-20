@@ -24,12 +24,8 @@
 
                 @for (var i = 0; i < containers.Count; i++)
                 {
-                    //if (!Model.Containers[i].Groups.Any())
-                    //{
-                    //    continue;
-                    //}
                     <div>
-                        @Html.LabelForModel(containers[i].Name + " - Head")
+                        @Html.LabelForModel(containers[i].Name + " - Head - " + i)
                         @for (int j = 0; j < containers[i].Groups.Where(x => x.GroupType == item.Key).ToList().Count; j++)
                         {
                             <div>
