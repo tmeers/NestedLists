@@ -28,6 +28,15 @@ namespace NestedLists.Controllers
                 Groups = new List<GroupViewModel>(AddGroups(GroupType.High)),
                 ContainerType = GroupType.High
             });
+
+            view.Containers.Add(new ContainerViewModel
+            {
+                Id = 4,
+                Name = "Container 4",
+                Groups = new List<GroupViewModel>(AddGroups(GroupType.Low)),
+                ContainerType = GroupType.Low
+            });
+
             view.Containers.Add(new ContainerViewModel
             {
                 Id = 2,
@@ -35,6 +44,7 @@ namespace NestedLists.Controllers
                 Groups = new List<GroupViewModel>(AddGroups(GroupType.Medium)),
                 ContainerType = GroupType.Medium
             });
+
             view.Containers.Add(new ContainerViewModel
             {
                 Id = 3,
