@@ -16,10 +16,40 @@ namespace NestedLists.Controllers
         }
 
         private static int StartNumber { get; set; }
+
         public ActionResult Index()
         {
+
+
+            return View(BuildData());
+        }
+
+        [HttpPost]
+        public ActionResult Index([Bind(Include = "Containers")] IndexViewModel index)
+        {
+
+
+            return View(BuildData());
+        }
+
+        public ActionResult ListTwo()
+        {
+
+
+            return View(BuildData());
+        }
+        [HttpPost]
+        public ActionResult ListTwo([Bind(Include = "Containers")] IndexViewModel index)
+        {
+
+
+            return View(BuildData());
+        }
+
+        private static IndexViewModel BuildData()
+        {
             IndexViewModel view = new IndexViewModel();
-            
+
             view.Containers = new List<ContainerViewModel>();
             view.Containers.Add(new ContainerViewModel
             {
@@ -31,8 +61,8 @@ namespace NestedLists.Controllers
 
             view.Containers.Add(new ContainerViewModel
             {
-                Id = 4,
-                Name = "Container 4",
+                Id = 5,
+                Name = "Container 5",
                 Groups = new List<GroupViewModel>(AddGroups(GroupType.Low)),
                 ContainerType = GroupType.Low
             });
@@ -55,22 +85,15 @@ namespace NestedLists.Controllers
 
             view.Containers.Add(new ContainerViewModel
             {
-                Id = 5,
-                Name = "Container 5",
+                Id = 4,
+                Name = "Container 4",
                 Groups = new List<GroupViewModel>(AddGroups(GroupType.Low)),
                 ContainerType = GroupType.Low
             });
 
-            return View(view);
+            return view;
         }
 
-        [HttpPost]
-        public ActionResult Index([Bind(Include = "Containers")] IndexViewModel index)
-        {
-
-
-            return View();
-        }
         private static List<GroupViewModel> AddGroups(GroupType type)
         {
             var _groups = new List<GroupViewModel>();
