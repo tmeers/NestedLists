@@ -55,8 +55,8 @@ namespace NestedLists.Controllers
 
             view.Containers.Add(new ContainerViewModel
             {
-                Id = 4,
-                Name = "Container 4",
+                Id = 5,
+                Name = "Container 5",
                 Groups = new List<GroupViewModel>(AddGroups(GroupType.Low)),
                 ContainerType = GroupType.Low
             });
