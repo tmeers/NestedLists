@@ -30,7 +30,8 @@
                         {
                             <div>
                                 @Html.CheckBoxFor(m =>containers[i].Groups[j].Selected)
-                                @Html.LabelForModel(containers[i].Groups[j].GroupName + " - " + containers[i].Groups[j].GroupType.ToString())
+                                @Html.LabelFor(m => containers[i].Groups[j].Selected, containers[i].Groups[j].GroupName + " - " + containers[i].Groups[j].GroupType.ToString())
+
                                 @Html.HiddenFor(m => containers[i].Groups[j].Id)
                             </div>
                         }
