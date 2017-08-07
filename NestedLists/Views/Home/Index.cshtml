@@ -13,26 +13,29 @@
         var containerTypes = Model.Containers.GroupBy(x => x.ContainerType).Distinct().ToList();
         int c = 0;
 
-        foreach (var item in containerTypes)
+        foreach (var item in containerTypes.OrderBy(x => x.Key.ToString()))
         {
             c++;
-            List<ContainerViewModel> containers = Model.Containers.Where(x => x.ContainerType == item.Key && x.Groups.Any()).ToList();
+           // List<ContainerViewModel> containers = Model.Containers.Where(x => x.ContainerType == item.Key && x.Groups.Any()).ToList();
 
             <div class="row">
-                <h3>@Html.LabelForModel(item.Key.ToString())</h3>
-                <hr/>
-
-                @for (var i = 0; i < containers.Count; i++)
+                @Html.LabelForModel(item.Key.ToString(), new { @class = "h3" })
+                @for (var i = 0; i < Model.Containers.Count; i++)
                 {
+                    if (!Model.Containers[i].Groups.Where(x => x.GroupType == item.Key).ToList().Any())
+                    {
+                        continue;
+                    }
+
                     <div>
-                        @Html.LabelForModel(containers[i].Name + " - Head - " + i)
-                        @for (int j = 0; j < containers[i].Groups.Where(x => x.GroupType == item.Key).ToList().Count; j++)
+                        @Html.LabelForModel(Model.Containers[i].Name + " - Head - " + i)
+                        @for (int j = 0; j < Model.Containers[i].Groups.Where(x => x.GroupType == item.Key).ToList().Count; j++)
                         {
                             <div>
-                                @Html.CheckBoxFor(m =>containers[i].Groups[j].Selected)
-                                @Html.LabelFor(m => containers[i].Groups[j].Selected, containers[i].Groups[j].GroupName + " - " + containers[i].Groups[j].GroupType.ToString())
+                                @Html.CheckBoxFor(m => Model.Containers[i].Groups[j].Selected)
+                                @Html.LabelFor(m => m.Containers[i].Groups[j].Selected, Model.Containers[i].Groups[j].GroupName + " - " + Model.Containers[i].Groups[j].GroupType.ToString())
 
-                                @Html.HiddenFor(m => containers[i].Groups[j].Id)
+                                @Html.HiddenFor(m => Model.Containers[i].Groups[j].Id)
                             </div>
                         }
                         @*@Html.EditorFor(m => m.Containers[i])*@
